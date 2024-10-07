@@ -2,7 +2,7 @@ name: Build NBC on macOS
 on:
   push:
     branches:
-      - dev
+      - dev-macos
 jobs:
   build:
 # m
