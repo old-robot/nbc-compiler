@@ -1,0 +1,25 @@
+name: Build NBC on macOS
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Set up dependencies
+      run: |
+        brew update
+        brew install gcc make fpc libusb
+    - name: Build NBC
+      run: |
+        make
+    - name: Run tests
+      run: ./nbc ./tests/bools.nbc
+    - name: Store NBC Binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: nbc-binary
+        path: ./nbc

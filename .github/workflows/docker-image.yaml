@@ -1,0 +1,28 @@
+name: Build and Push Docker Image to GHCR
+
+on:
+  push:
+    branches:
+      - dev-linux
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./build/Dockerfile-dev
+#        push: true
+#        tags: ghcr.io/${{ github.repository }}/nbc-dev-env:0.01
