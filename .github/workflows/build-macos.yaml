@@ -5,7 +5,10 @@ on:
       - dev
 jobs:
   build:
-    runs-on: macos-13
+# m
+    runs-on: macos-latest
+# intel
+#    runs-on: macos-13
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
