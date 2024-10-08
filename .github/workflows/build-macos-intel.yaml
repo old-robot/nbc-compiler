@@ -1,13 +1,13 @@
 name: Build NBC on macOS
 on:
   push:
-#    branches:
-#      - dev
-    tags:
-      - "macos-intel"
+    branches:
+      - dev
 jobs:
   build:
     runs-on: macos-13
+    if: contains(github.event.head_commit.message, 'build macos-intel')
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3

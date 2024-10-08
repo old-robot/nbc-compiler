@@ -1,13 +1,13 @@
 name: Build NBC on macOS
 on:
   push:
-#    branches:
-#      - dev
-    tags:
-      - "macos-m1"
+    branches:
+      - dev
 jobs:
   build:
     runs-on: macos-14
+    if: contains(github.event.head_commit.message, 'build macos-m1')
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
