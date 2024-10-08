@@ -3,7 +3,8 @@ WORKDIR /nbc
 COPY src ./src
 COPY tests ./tests
 COPY Makefile .
-RUN apt update; apt install -y gcc make fpc libusb-dev
+#RUN apt update; apt install -y gcc make fpc libusb-dev
+RUN apt update; apt install -y gcc make fpc
 RUN make
 RUN ./nbc ./tests/bools.nbc
 
