@@ -1,0 +1,27 @@
+name: Build NBC on macOS intel
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  build:
+    runs-on: macos-13
+    if: contains(github.event.head_commit.message, 'build macos-intel')
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Set up dependencies
+      run: |
+        brew update
+        brew install gcc make fpc
+    - name: Build NBC
+      run: |
+        make
+    - name: Run tests
+      run: ./nbc ./tests/bools.nbc
+    - name: Store NBC Binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: nbc-binary
+        path: ./nbc

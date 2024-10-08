@@ -1,0 +1,8 @@
+FROM ghcr.io/old-robot/nbc-compiler/nbc-dev-env:0.01
+WORKDIR /nbc
+COPY src ./src
+COPY tests ./tests
+COPY Makefile .
+RUN make
+RUN ./nbc -help
+RUN ./nbc ./tests/bools.nbc
