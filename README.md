@@ -4,6 +4,19 @@ From [Bricxcc](https://sourceforge.net/projects/bricxcc/) by John Hansen (see <h
 This is based on the latest available release, [1.2.1.r4](https://sourceforge.net/projects/bricxcc/files/NBC_NXC/NBC%20release%201.2.1%20r4/).
 
 
+## Remove device handling from compiler
+
+NBC defults buildin device handling such as file uploading to the NXT brick. Its relaied on the lego fantom driver on windows and macos.
+Unfortunately, the fantom is no longer supported and it cant work on moderm 64bit macos.
+So remove it from the compiler and use other tools to handling the device is better.
+
+The changes are in the `src/NXT/Makefile`.
+
+```diff
+-PFLAGS=-S2cdghi -dRELEASE -vewnhi -l -Fu../commons -Fu. -Fu../bricktools -dCAN_DOWNLOAD
++PFLAGS=-S2cdghi -dRELEASE -vewnhi -l -Fu../commons -Fu.
+```
+
 ## Compile that in Ubuntu 24.04
 
 + install dependencies and build

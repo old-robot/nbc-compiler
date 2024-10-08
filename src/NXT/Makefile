@@ -13,7 +13,6 @@ clean::
 realclean:: clean
 	rm -f $(PROGRAMS) mkdata NBCCommonData.pas NXTDefsData.pas NXCDefsData.pas
 
-#PFLAGS=-S2cdghi -dRELEASE -vewnhi -l -Fu../commons -Fu. -Fu../bricktools -dCAN_DOWNLOAD
 PFLAGS=-S2cdghi -dRELEASE -vewnhi -l -Fu../commons -Fu.
 PPC=fpc
 
