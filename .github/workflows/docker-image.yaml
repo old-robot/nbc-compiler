@@ -3,7 +3,7 @@ name: Build and Push Docker Image to GHCR
 on:
   push:
     branches:
-      - dev
+      - release
 
 jobs:
   build:
@@ -25,5 +25,5 @@ jobs:
       with:
         context: .
         file: ./build/Dockerfile-dev
-#        push: true
-#        tags: ghcr.io/${{ github.repository }}/nbc-dev-env:0.01
+        push: true
+        tags: ghcr.io/${{ github.repository }}/nbc-dev-env:0.01
