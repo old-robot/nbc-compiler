@@ -1,24 +1,18 @@
 # NBC/NXC to NXT compiler
 
-Adapted from [Bricxcc](https://sourceforge.net/projects/bricxcc/) by John Hansen (see <http://bricxcc.sourceforge.net/nbc/>).
+From [Bricxcc](https://sourceforge.net/projects/bricxcc/) by John Hansen (see <http://bricxcc.sourceforge.net/nbc/>).
 This is based on the latest available release, [1.2.1.r4](https://sourceforge.net/projects/bricxcc/files/NBC_NXC/NBC%20release%201.2.1%20r4/).
-I just tried to compile it on a up-to-date Linux distribution (because this is the target language of my compiler project for a CS lesson), because the provided Linux binary was not working anymore.
-I also moved and edited a few stuff, because the file organization was a mess.
 
-**I do not plan on fixing bugs or anything** ;)
-If you are a CS student in the University of Namur, you probably know where to find me for (some kind of) support, though.
 
-Also, I'm not supporting **Windows** and **Mac** compilation at the moment (but PR are welcomed if someone is motivated enough, the tricky part is probably to get the pascal compiler and `libusb`).
-[There are already binaries](https://sourceforge.net/projects/bricxcc/files/NBC_NXC/NBC%20release%201.2.1%20r4/) for those operating systems, but I didn't test them.
+## Compile that in Ubuntu 24.04
 
-## Compile that in Linux
++ install dependencies and build
 
-**Note**: on Uuntu, [there is also a `nbc` package](https://packages.ubuntu.com/xenial/electronics/nbc) if you prefer. The one in Fedora is a bit outdated, so this explain why I tried to compile it.
+```
+sudo apt install -y gcc make fpc libusb-dev
+make
+```
 
-+ Check your package distribution for something that looks like `fpc` and install it, or go to the page for the [latest version of the compiler](https://sourceforge.net/projects/freepascal/files/Linux/3.0.4/), download and install what corresponds to your distribution ;
-+ Check your package distribution for something that looks like `libusb-dev` and install it ;
-+ Clone this repository ;
-+ Compile the compiler: `make all`. If everything goes well, there should be a `nbc` executable file in your folder.
 + Test that everything goes well, by using `./nbc tests/bools.nbc`. The output should look like
 
 ```
@@ -92,7 +86,3 @@ Syntax: nbc [options] filename [options]
 ```
 /path/to/nbc /path/to/input.nbc -O=/path/to/output.rxe
 ```
-
-The `-O=` part is only required if you wan to execute your program latter in a simulator, like [this one](http://schuelerlabor.informatik.rwth-aachen.de/roboter-simulator). **There is a port of their interpreter available [here](https://github.com/pierre-24/nxt-interpreter)**.
-
-Also note that right after the execution of this command, `echo $?` is either `0` if the compilation went well, `1` if it is not the case, so that should allow for some CI/testing procedure.
