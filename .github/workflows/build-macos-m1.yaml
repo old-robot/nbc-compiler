@@ -4,10 +4,10 @@ on:
 #    branches:
 #      - dev
     tags:
-      - "macos-intel"
+      - "macos-m1"
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-14
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
