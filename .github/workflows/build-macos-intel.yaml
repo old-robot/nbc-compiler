@@ -1,4 +1,4 @@
-name: Build NBC on macOS
+name: Build NBC on macOS intel
 on:
   push:
     branches:
