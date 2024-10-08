@@ -2,12 +2,11 @@ name: Build NBC on macOS
 on:
   push:
     branches:
-      - dev-macos
+      - dev
+    tags:
+      - "macos-intel"
 jobs:
   build:
-# m
-#    runs-on: macos-latest
-# intel
     runs-on: macos-13
     steps:
     - name: Checkout repository
@@ -15,7 +14,7 @@ jobs:
     - name: Set up dependencies
       run: |
         brew update
-        brew install gcc make fpc libusb
+        brew install gcc make fpc
     - name: Build NBC
       run: |
         make
